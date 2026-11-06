@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus Lab</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f4fc;
+      color: #29213e;
+      max-width: 650px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    h1 { color: #624b9b; }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      margin: 20px 0;
+      box-shadow: 0 3px 12px #ddd5ed;
+    }
+
+    input {
+      padding: 12px;
+      border: 1px solid #d5c9eb;
+      border-radius: 8px;
+      width: 90%;
+      margin-bottom: 12px;
+    }
+
+    button {
+      background: #7357ad;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    li { margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <h1>✦ Focus Lab</h1>
+  <p>Stay with your mission. Capture everything else.</p>
+
+  <div class="card">
+    <h3>🎯 Current Mission</h3>
+    <input id="mission" placeholder="What are you working on?">
+    <button onclick="completeMission()">
+      Complete Mission
+    </button>
+  </div>
+
+  <div class="card">
+    <h3>💭 Something else on your mind?</h3>
+    <input id="thought" placeholder="Capture a thought...">
+    <button onclick="captureThought()">Capture</button>
+  </div>
+
+  <div class="card">
+    <h3>📥 Interruption Inbox</h3>
+    <ul id="inbox"></ul>
+  </div>
+
+  <script>
+    function captureThought() {
+      const input = document.getElementById("thought");
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      const item = document.createElement("li");
+      item.textContent = text;
+      document.getElementById("inbox").appendChild(item);
+
+      input.value = "";
+      input.focus();
+    }
+
+    function completeMission() {
+      const mission = document.getElementById("mission");
+      if (!mission.value.trim()) return;
+
+      alert("Mission complete! 🎉");
+      mission.value = "";
+    }
+  </script>
+</body>
+</html>
